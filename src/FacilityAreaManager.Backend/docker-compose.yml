@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  facilityareamanagerapi:
+    container_name: facilityareamanager-facilityareamanagerapi
+    image: ${DOCKER_REGISTRY-}facilityareamanagerapi
+    build:
+      context: .
+      dockerfile: FacilityAreaManagerApi/Dockerfile
+    ports: 
+      - 7145:8081
+    networks:
+    - backend-net
+
+  db:
+    container_name: facilityareamanager-db
+    image: mcr.microsoft.com/mssql/server
+    restart: always
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "12345"
+    ports:
+      - 1433:1433
+    volumes:
+      - ms-sql-test-volume:/var/opt/mssql
+
+volumes:
+  ms-sql-test-volume:
+
+networks:
+  backend-net:
