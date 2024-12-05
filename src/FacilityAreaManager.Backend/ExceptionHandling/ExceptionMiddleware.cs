@@ -40,11 +40,6 @@ namespace ExceptionHandling
             {
                 await SetError(httpContext, HttpStatusCode.Conflict, ex, new[] { ex.Message }).ConfigureAwait(false);
             }
-            catch (AuthorizationException ex)
-            {
-                var errors = ex.Errors.ToArray();
-                await SetError(httpContext, HttpStatusCode.Conflict, ex, errors).ConfigureAwait(false);
-            }
             catch (UniqueConstraintException ex)
             {
                 await SetError(httpContext, HttpStatusCode.Conflict, ex, new[] { $"{ex.Message}: '{ex.Entries.FirstOrDefault()?.Entity.GetType().Name ?? ""}'" }).ConfigureAwait(false);

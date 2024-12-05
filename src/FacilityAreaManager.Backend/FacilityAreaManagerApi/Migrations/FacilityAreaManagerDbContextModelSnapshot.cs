@@ -24,7 +24,11 @@ namespace FacilityAreaManagerApi.Migrations
             modelBuilder.Entity("FacilityAreaManagerApi.Infrastructure.Entities.EquipmentPlacementContract", b =>
                 {
                     b.Property<string>("Code")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("EquipmentQuantity")
+                        .HasColumnType("int");
 
                     b.Property<string>("ProcessEquipmentTypeCode")
                         .IsRequired()
@@ -46,6 +50,7 @@ namespace FacilityAreaManagerApi.Migrations
             modelBuilder.Entity("FacilityAreaManagerApi.Infrastructure.Entities.ProcessEquipmentType", b =>
                 {
                     b.Property<string>("Code")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<float>("Area")
@@ -64,6 +69,7 @@ namespace FacilityAreaManagerApi.Migrations
             modelBuilder.Entity("FacilityAreaManagerApi.Infrastructure.Entities.ProductionFacility", b =>
                 {
                     b.Property<string>("Code")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")

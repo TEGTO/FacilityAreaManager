@@ -1,9 +1,11 @@
 using DatabaseControl;
 using ExceptionHandling;
 using FacilityAreaManagerApi;
+using FacilityAreaManagerApi.BackgroundServices;
 using FacilityAreaManagerApi.Infrastructure.Data;
-using FluentValidation;
-using FluentValidation.AspNetCore;
+using FacilityAreaManagerApi.Infrastructure.Repositories;
+using FacilityAreaManagerApi.Infrastructure.Validators;
+using FacilityAreaManagerApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +28,13 @@ if (useCors)
 
 #endregion
 
+#region Project Services
+
+builder.Services.AddSingleton<IFacilityAreaManagerRepository, FacilityAreaManagerRepository>();
+builder.Services.AddSingleton<IContractProcessingBackgroundService, ContractProcessingBackgroundService>();
+
+#endregion
+
 builder.Services.ConfigureCustomInvalidModelStateResponseControllers();
 
 builder.Services.AddControllers();
@@ -33,14 +42,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-#region Fluent Validation
-
-builder.Services.AddFluentValidationAutoValidation();
-builder.Services.AddFluentValidationClientsideAdapters();
-builder.Services.AddValidatorsFromAssemblyContaining(typeof(Program));
-ValidatorOptions.Global.LanguageManager.Enabled = false;
-
-#endregion
+builder.Services.AddSharedFluentValidation(typeof(AddEquipmentPlacementContractRequestValidator));
 
 builder.Services.AddMediatR(conf =>
 {
@@ -48,6 +50,8 @@ builder.Services.AddMediatR(conf =>
 });
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
+builder.Services.AddHostedService<ContractProcessingBackgroundService>();
 
 var app = builder.Build();
 
@@ -65,6 +69,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseExceptionMiddleware();
+app.UseMiddleware<ApiKeyMiddleware>();
 
 app.UseAuthorization();
 

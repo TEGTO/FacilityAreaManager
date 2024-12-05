@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FacilityAreaManagerApi.Migrations
 {
     [DbContext(typeof(FacilityAreaManagerDbContext))]
-    [Migration("20241205164927_InitialMigration")]
+    [Migration("20241205171853_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -27,7 +27,11 @@ namespace FacilityAreaManagerApi.Migrations
             modelBuilder.Entity("FacilityAreaManagerApi.Infrastructure.Entities.EquipmentPlacementContract", b =>
                 {
                     b.Property<string>("Code")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("EquipmentQuantity")
+                        .HasColumnType("int");
 
                     b.Property<string>("ProcessEquipmentTypeCode")
                         .IsRequired()
@@ -49,6 +53,7 @@ namespace FacilityAreaManagerApi.Migrations
             modelBuilder.Entity("FacilityAreaManagerApi.Infrastructure.Entities.ProcessEquipmentType", b =>
                 {
                     b.Property<string>("Code")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<float>("Area")
@@ -67,6 +72,7 @@ namespace FacilityAreaManagerApi.Migrations
             modelBuilder.Entity("FacilityAreaManagerApi.Infrastructure.Entities.ProductionFacility", b =>
                 {
                     b.Property<string>("Code")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")

@@ -42,7 +42,8 @@ namespace FacilityAreaManagerApi.Migrations
                 {
                     Code = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProductionFacilityCode = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProcessEquipmentTypeCode = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    ProcessEquipmentTypeCode = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    EquipmentQuantity = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityAreaManagerApi", "FacilityAreaManagerApi\FacilityAreaManagerApi.csproj", "{9F01BC3A-D827-462F-AE6B-EDC1A2AF9915}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityAreaManagerApi", "FacilityAreaManagerApi\FacilityAreaManagerApi.csproj", "{9F01BC3A-D827-462F-AE6B-EDC1A2AF9915}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityAreaManagerApi.Infrastructure", "FacilityAreaManagerApi.Infrastructure\FacilityAreaManagerApi.Infrastructure.csproj", "{15186B85-E516-46AE-AF2C-1476B0E98996}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityAreaManagerApi.Infrastructure", "FacilityAreaManagerApi.Infrastructure\FacilityAreaManagerApi.Infrastructure.csproj", "{15186B85-E516-46AE-AF2C-1476B0E98996}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseControl", "DatabaseControl\DatabaseControl.csproj", "{8C7A330D-C4C7-49DF-AE75-02F02E3646E7}"
 EndProject
@@ -16,6 +16,18 @@ EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FAB70E29-30D9-4B39-ABBF-5664095D2DDE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionHandling", "ExceptionHandling\ExceptionHandling.csproj", "{39CF3D60-2A6E-40FA-A82E-8F8581288A19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7D9F1AF4-5D22-4C35-BC25-ACA4AF05F19E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{8C3D7518-916F-4340-8215-6D2DE36A3A74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityAreaManagerApiTests", "..\..\test\FacilityAreaManager.UnitTests\FacilityAreaManagerApiTests\FacilityAreaManagerApiTests.csproj", "{277F78A0-0A00-4461-899E-BDD7CF49D280}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseControlTests", "..\..\test\FacilityAreaManager.UnitTests\DatabaseControlTests\DatabaseControlTests.csproj", "{258AB529-52AA-4EF1-A0BD-D578F34FD8E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityAreaManagerApi.InfrastructureTests", "..\..\test\FacilityAreaManager.UnitTests\FacilityAreaManagerApi.InfrastructureTests\FacilityAreaManagerApi.InfrastructureTests.csproj", "{079E76E3-4A5B-4D52-9DA1-036BD16C7E43}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionHandlingTests", "..\..\test\FacilityAreaManager.UnitTests\ExceptionHandlingTests\ExceptionHandlingTests.csproj", "{10442892-6268-4C25-B2AD-E1E7518F9318}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +59,22 @@ Global
 		{39CF3D60-2A6E-40FA-A82E-8F8581288A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39CF3D60-2A6E-40FA-A82E-8F8581288A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39CF3D60-2A6E-40FA-A82E-8F8581288A19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{277F78A0-0A00-4461-899E-BDD7CF49D280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{277F78A0-0A00-4461-899E-BDD7CF49D280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{277F78A0-0A00-4461-899E-BDD7CF49D280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{277F78A0-0A00-4461-899E-BDD7CF49D280}.Release|Any CPU.Build.0 = Release|Any CPU
+		{258AB529-52AA-4EF1-A0BD-D578F34FD8E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{258AB529-52AA-4EF1-A0BD-D578F34FD8E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{258AB529-52AA-4EF1-A0BD-D578F34FD8E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{258AB529-52AA-4EF1-A0BD-D578F34FD8E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{079E76E3-4A5B-4D52-9DA1-036BD16C7E43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{079E76E3-4A5B-4D52-9DA1-036BD16C7E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{079E76E3-4A5B-4D52-9DA1-036BD16C7E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{079E76E3-4A5B-4D52-9DA1-036BD16C7E43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10442892-6268-4C25-B2AD-E1E7518F9318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10442892-6268-4C25-B2AD-E1E7518F9318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10442892-6268-4C25-B2AD-E1E7518F9318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10442892-6268-4C25-B2AD-E1E7518F9318}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +84,11 @@ Global
 		{8C7A330D-C4C7-49DF-AE75-02F02E3646E7} = {3DF4729F-EAC4-4029-8597-80E68AB8C940}
 		{7DCBA128-0783-45BD-B38C-F637B399F6CE} = {3DF4729F-EAC4-4029-8597-80E68AB8C940}
 		{39CF3D60-2A6E-40FA-A82E-8F8581288A19} = {3DF4729F-EAC4-4029-8597-80E68AB8C940}
+		{8C3D7518-916F-4340-8215-6D2DE36A3A74} = {7D9F1AF4-5D22-4C35-BC25-ACA4AF05F19E}
+		{277F78A0-0A00-4461-899E-BDD7CF49D280} = {8C3D7518-916F-4340-8215-6D2DE36A3A74}
+		{258AB529-52AA-4EF1-A0BD-D578F34FD8E9} = {8C3D7518-916F-4340-8215-6D2DE36A3A74}
+		{079E76E3-4A5B-4D52-9DA1-036BD16C7E43} = {8C3D7518-916F-4340-8215-6D2DE36A3A74}
+		{10442892-6268-4C25-B2AD-E1E7518F9318} = {8C3D7518-916F-4340-8215-6D2DE36A3A74}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0ACB3A78-0CD3-4AA7-BD62-D11D6AD06979}
