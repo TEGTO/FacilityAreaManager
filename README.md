@@ -73,6 +73,17 @@ X-Api-Key: apikeyvalue
 
 ---
 
+## Background Service: Contract Processing
+
+### Overview
+
+The **Contract Processing Background Service** logs the results of contract creation for auditing and debugging purposes.
+
+#### Source:
+[ContractProcessingBackgroundService.cs](https://github.com/TEGTO/FacilityAreaManager/blob/main/src/FacilityAreaManager.Backend/FacilityAreaManagerApi/BackgroundServices/ContractProcessingBackgroundService.cs)
+
+---
+
 ## Installation Guide
 
 ### 1. **Clone the Repository**
