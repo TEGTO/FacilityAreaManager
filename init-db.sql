@@ -1,16 +1,16 @@
-INSERT INTO ProductionFacility (Code, Name, StandardAreaForEquipment)
+INSERT INTO ProductionFacilities (Code, Name, StandardAreaForEquipment)
 VALUES 
 ('PF001', 'Facility A', 5000),
 ('PF002', 'Facility B', 3000),
 ('PF003', 'Facility C', 8000);
 
-INSERT INTO ProcessEquipmentType (Code, Name, Area)
+INSERT INTO ProcessEquipmentTypes (Code, Name, Area)
 VALUES 
 ('PET001', 'Equipment Type A', 200),
 ('PET002', 'Equipment Type B', 150),
 ('PET003', 'Equipment Type C', 300);
 
-INSERT INTO EquipmentPlacementContract (Code, ProductionFacilityCode, ProcessEquipmentTypeCode, NumberOfEquipmentUnits)
+INSERT INTO EquipmentPlacementContracts (Code, ProductionFacilityCode, ProcessEquipmentTypeCode, EquipmentQuantity)
 VALUES 
 ('EPC001', 'PF001', 'PET001', 10), 
 ('EPC002', 'PF001', 'PET002', 15),
