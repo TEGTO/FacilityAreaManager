@@ -23,6 +23,11 @@ namespace FacilityAreaManagerApi.Commands.CreateProductionFacility
 
             var createdEntity = await repository.CreateProductionFacilityAsync(entity, cancellationToken);
 
+            if (createdEntity == null)
+            {
+                throw new InvalidOperationException("Created entity is null!");
+            }
+
             return mapper.Map<ProductionFacilityResponse>(createdEntity);
         }
     }

@@ -68,9 +68,10 @@ namespace FacilityAreaManagerApi.Migrations
                 column: "ProcessEquipmentTypeCode");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EquipmentPlacementContracts_ProductionFacilityCode",
+                name: "IX_Unique_EquipmentPlacementContract",
                 table: "EquipmentPlacementContracts",
-                column: "ProductionFacilityCode");
+                columns: new[] { "ProductionFacilityCode", "ProcessEquipmentTypeCode" },
+                unique: true);
         }
 
         /// <inheritdoc />

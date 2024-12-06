@@ -2,6 +2,7 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System.Net;
@@ -47,6 +48,10 @@ namespace ExceptionHandling
             catch (UnauthorizedAccessException ex)
             {
                 await SetError(httpContext, HttpStatusCode.Unauthorized, ex, new[] { ex.Message }).ConfigureAwait(false);
+            }
+            catch (DbUpdateException ex)
+            {
+                await SetError(httpContext, HttpStatusCode.Conflict, ex, new[] { ex.Message }).ConfigureAwait(false);
             }
             catch (SecurityTokenMalformedException ex)
             {

@@ -3,7 +3,7 @@ using FluentValidation.AspNetCore;
 
 namespace FacilityAreaManagerApi
 {
-    public static class Extenstions
+    public static class Extensions
     {
         public static IServiceCollection AddSharedFluentValidation(this IServiceCollection services, Type type)
         {

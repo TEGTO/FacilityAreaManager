@@ -40,7 +40,38 @@ builder.Services.ConfigureCustomInvalidModelStateResponseControllers();
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "Facility Area Manager API",
+        Version = "v1",
+        Description = "API documentation for Facility Area Manager."
+    });
+
+    options.AddSecurityDefinition("ApiKey", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Name = "X-Api-Key",
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
+        Description = "API Key authentication using the X-Api-Key header.",
+    });
+
+    options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "ApiKey"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
 
 builder.Services.AddSharedFluentValidation(typeof(AddEquipmentPlacementContractRequestValidator));
 
@@ -55,6 +86,11 @@ builder.Services.AddHostedService<ContractProcessingBackgroundService>();
 
 var app = builder.Build();
 
+if (app.Configuration[Configuration.EF_CREATE_DATABASE] == "true")
+{
+    await app.ConfigureDatabaseAsync<FacilityAreaManagerDbContext>(CancellationToken.None);
+}
+
 if (useCors)
 {
     app.UseCors(myAllowSpecificOrigins);
@@ -66,7 +102,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 
 app.UseExceptionMiddleware();
 app.UseMiddleware<ApiKeyMiddleware>();

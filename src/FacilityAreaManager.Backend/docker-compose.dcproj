@@ -5,7 +5,8 @@
     <DockerTargetOS>Linux</DockerTargetOS>
     <DockerPublishLocally>False</DockerPublishLocally>
     <ProjectGuid>fab70e29-30d9-4b39-abbf-5664095d2dde</ProjectGuid>
-    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+	  <DockerLaunchAction>None</DockerLaunchAction>
+	  <DockerDevelopmentMode>Fast</DockerDevelopmentMode>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>facilityareamanagerapi</DockerServiceName>
 	<DockerComposeProjectName>facilityareamanager-backend-dev</DockerComposeProjectName>

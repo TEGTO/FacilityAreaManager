@@ -1,6 +1,7 @@
 ﻿using EntityFramework.Exceptions.Common;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Moq;
@@ -33,6 +34,7 @@ namespace ExceptionHandling.Tests
         [TestCase(typeof(UniqueConstraintException), HttpStatusCode.Conflict, "Constraint error.")]
         [TestCase(typeof(UnauthorizedAccessException), HttpStatusCode.Unauthorized, "Invalid Authentication.")]
         [TestCase(typeof(InvalidOperationException), HttpStatusCode.Conflict, "Operation error.")]
+        [TestCase(typeof(DbUpdateException), HttpStatusCode.Conflict, "An error occurred while saving the entity changes.")]
         [TestCase(typeof(SecurityTokenMalformedException), HttpStatusCode.Conflict, "Security token error.")]
         [TestCase(typeof(Exception), HttpStatusCode.InternalServerError, "Internal Server Error.")]
         public async Task InvokeAsync_ExceptionThrown_SetsCorrectStatusCodeAndLogsError(Type exceptionType, HttpStatusCode expectedStatusCode, string exceptionMessage)

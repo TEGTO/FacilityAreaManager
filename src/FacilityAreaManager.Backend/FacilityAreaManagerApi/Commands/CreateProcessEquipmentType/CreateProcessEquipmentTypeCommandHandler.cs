@@ -23,6 +23,11 @@ namespace FacilityAreaManagerApi.Commands.CreateProcessEquipmentType
 
             var createdEntity = await repository.CreateProcessEquipmentTypeAsync(entity, cancellationToken);
 
+            if (createdEntity == null)
+            {
+                throw new InvalidOperationException("Created entity is null!");
+            }
+
             return mapper.Map<ProcessEquipmentTypeResponse>(createdEntity);
         }
     }

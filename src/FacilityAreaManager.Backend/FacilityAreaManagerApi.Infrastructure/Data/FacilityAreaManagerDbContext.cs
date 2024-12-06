@@ -13,5 +13,14 @@ namespace FacilityAreaManagerApi.Infrastructure.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<EquipmentPlacementContract>()
+                .HasIndex(e => new { e.ProductionFacilityCode, e.ProcessEquipmentTypeCode })
+                .IsUnique()
+                .HasDatabaseName("IX_Unique_EquipmentPlacementContract");
+        }
     }
 }

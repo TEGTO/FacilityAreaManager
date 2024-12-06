@@ -8,7 +8,7 @@ services:
       context: .
       dockerfile: FacilityAreaManagerApi/Dockerfile
     ports: 
-      - 7145:8081
+      - 7145:8080
     networks:
     - backend-net
 
@@ -18,11 +18,13 @@ services:
     restart: always
     environment:
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: "12345"
+      SA_PASSWORD: ${SA_PASSWORD}
     ports:
       - 1433:1433
     volumes:
       - ms-sql-test-volume:/var/opt/mssql
+    networks:
+      - backend-net
 
 volumes:
   ms-sql-test-volume:

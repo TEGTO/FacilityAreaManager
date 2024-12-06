@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FacilityAreaManagerApi.Migrations
 {
     [DbContext(typeof(FacilityAreaManagerDbContext))]
-    [Migration("20241205171853_InitialMigration")]
+    [Migration("20241206074442_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -45,7 +45,9 @@ namespace FacilityAreaManagerApi.Migrations
 
                     b.HasIndex("ProcessEquipmentTypeCode");
 
-                    b.HasIndex("ProductionFacilityCode");
+                    b.HasIndex("ProductionFacilityCode", "ProcessEquipmentTypeCode")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Unique_EquipmentPlacementContract");
 
                     b.ToTable("EquipmentPlacementContracts");
                 });

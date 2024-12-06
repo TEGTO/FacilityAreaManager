@@ -42,7 +42,9 @@ namespace FacilityAreaManagerApi.Migrations
 
                     b.HasIndex("ProcessEquipmentTypeCode");
 
-                    b.HasIndex("ProductionFacilityCode");
+                    b.HasIndex("ProductionFacilityCode", "ProcessEquipmentTypeCode")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Unique_EquipmentPlacementContract");
 
                     b.ToTable("EquipmentPlacementContracts");
                 });

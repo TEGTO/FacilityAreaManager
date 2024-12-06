@@ -16,35 +16,35 @@ namespace FacilityAreaManagerApi.Infrastructure.Repositories
 
         public async Task<EquipmentPlacementContract> CreateEquipmentPlacementContractAsync(EquipmentPlacementContract entity, CancellationToken cancellationToken)
         {
-            return await repository.AddAsync(entity, cancellationToken);
+            return await repository.AddAsync(entity, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<ProcessEquipmentType> CreateProcessEquipmentTypeAsync(ProcessEquipmentType entity, CancellationToken cancellationToken)
         {
-            return await repository.AddAsync(entity, cancellationToken);
+            return await repository.AddAsync(entity, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<ProductionFacility> CreateProductionFacilityAsync(ProductionFacility entity, CancellationToken cancellationToken)
         {
-            return await repository.AddAsync(entity, cancellationToken);
+            return await repository.AddAsync(entity, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<ProcessEquipmentType?> GetProcessEquipmentTypeByCodeAsync(string code, CancellationToken cancellationToken)
         {
-            var queryable = await repository.GetQueryableAsync<ProcessEquipmentType>(cancellationToken);
-            return await queryable.FirstOrDefaultAsync(x => x.Code == code, cancellationToken);
+            var queryable = await repository.GetQueryableAsync<ProcessEquipmentType>(cancellationToken).ConfigureAwait(false);
+            return await queryable.FirstOrDefaultAsync(x => x.Code == code, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<ProductionFacility?> GetProductionFacilityByCodeAsync(string code, CancellationToken cancellationToken)
         {
-            var queryable = await repository.GetQueryableAsync<ProductionFacility>(cancellationToken);
-            return await queryable.FirstOrDefaultAsync(x => x.Code == code, cancellationToken);
+            var queryable = await repository.GetQueryableAsync<ProductionFacility>(cancellationToken).ConfigureAwait(false);
+            return await queryable.FirstOrDefaultAsync(x => x.Code == code, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<EquipmentPlacementContract>> GetEquipmentPlacementContractsAsync(CancellationToken cancellationToken)
         {
-            var queryable = await repository.GetQueryableAsync<EquipmentPlacementContract>(cancellationToken);
-            return await queryable.ToListAsync(cancellationToken);
+            var queryable = await repository.GetQueryableAsync<EquipmentPlacementContract>(cancellationToken).ConfigureAwait(false);
+            return await queryable.ToListAsync(cancellationToken).ConfigureAwait(false);
         }
     }
 }
